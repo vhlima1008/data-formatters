@@ -30,10 +30,13 @@ export const formatCompactPercent = (
   }
 
   const locale = getLocale(options);
+  const fractionDigits = Math.abs(value) < 1000 ? 2 : 1;
 
   return new Intl.NumberFormat(locale, {
     style: 'percent',
-    minimumFractionDigits: options.minimumFractionDigits,
-    maximumFractionDigits: options.maximumFractionDigits ?? 1,
+    notation: 'compact',
+    compactDisplay: 'short',
+    minimumFractionDigits: fractionDigits,
+    maximumFractionDigits: fractionDigits,
   }).format(value);
 };

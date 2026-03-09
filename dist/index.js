@@ -92,16 +92,26 @@ var formatCompactPercent = (value, options = {}) => {
     return options.fallback ?? DEFAULT_FALLBACK3;
   }
   const locale = getLocale(options);
+  const fractionDigits = Math.abs(value) < 1e3 ? 2 : 1;
   return new Intl.NumberFormat(locale, {
     style: "percent",
-    minimumFractionDigits: options.minimumFractionDigits,
-    maximumFractionDigits: options.maximumFractionDigits ?? 1
+    notation: "compact",
+    compactDisplay: "short",
+    minimumFractionDigits: fractionDigits,
+    maximumFractionDigits: fractionDigits
   }).format(value);
 };
 
 // src/formatters/text.ts
 var formatName = (name) => {
   return name.trim().toLowerCase().replace(/(^|\s)\S/g, (char) => char.toUpperCase());
+};
+var capitalize = (value) => value.charAt(0).toUpperCase() + value.slice(1);
+var formatCompactName = (name) => {
+  const parts = name.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "";
+  if (parts.length === 1) return capitalize(parts[0] ?? "");
+  return `${capitalize(parts[0] ?? "")} ${capitalize(parts[parts.length - 1] ?? "")}`;
 };
 
 // src/formatters/bytes.ts
@@ -159,6 +169,7 @@ var formatRelativeTime = (value, unit, locale = "en-US") => {
 export {
   formatBytes,
   formatCompactCurrency,
+  formatCompactName,
   formatCompactNumber,
   formatCompactPercent,
   formatCurrency,
