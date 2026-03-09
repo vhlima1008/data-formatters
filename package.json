@@ -1,6 +1,6 @@
 {
   "name": "data-formatters",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Reusable TypeScript formatters for numbers, currency, percent and text.",
   "license": "MIT",
   "type": "module",
