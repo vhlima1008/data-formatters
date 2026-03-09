@@ -123,7 +123,7 @@ Victor Hugo Lima
 ```
 
 ---
-# 🌍 Locale Support
+# Locale Support
 The library uses the native **Intl API**, so formatting behavior depends on the provided locale.
 Examples:
 | Locale  | Number Example |
@@ -133,7 +133,7 @@ Examples:
 | `de-DE` | 1.000          |
 
 ---
-# 🧪 Testing
+# Testing
 Tests are written using **Vitest**.
 Run locally:
 ```bash
@@ -160,7 +160,7 @@ npm run build
 ```
 
 ---
-# 🤝 Contributing
+# Contributing
 Contributions are welcome!
 Steps:
 1. Fork the repository
@@ -173,7 +173,7 @@ git checkout -b feature/my-feature
 5. Open a Pull Request
 
 ---
-# 📜 License
+# License
 Distributed under the **MIT License**.
 See `LICENSE` for more information.
 
