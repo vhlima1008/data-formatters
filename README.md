@@ -5,7 +5,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/data-formatters.svg)](https://www.npmjs.com/package/data-formatters)
 [![License](https://img.shields.io/github/license/vhlima1008/data-formatters)](LICENSE)
 
-Utility library for **formatting numbers, currency, percentages, and text** using modern `Intl` APIs.
+Utility library for **formatting numbers, currency, percentages, dates, time, bytes, and text** using modern `Intl` APIs.
 This project provides small, reusable helpers to standardize value formatting in frontend applications.
 
 ---
@@ -17,6 +17,11 @@ This project provides small, reusable helpers to standardize value formatting in
 - Compact numbers
 - Percent formatting
 - Compact percent formatting
+- Date formatting
+- Date/time formatting
+- Relative time formatting
+- Duration formatting
+- Bytes formatting
 - Name normalization (Title Case)
 - Locale support (`Intl`)
 - Lightweight and dependency-free
@@ -26,7 +31,7 @@ This project provides small, reusable helpers to standardize value formatting in
 # Installation
 ```bash
 npm install data-formatters
-````
+```
 or
 ```bash
 yarn add data-formatters
@@ -36,13 +41,18 @@ yarn add data-formatters
 # Usage
 ```ts
 import {
+  formatBytes,
   formatCurrency,
+  formatDate,
+  formatDateTime,
+  formatDuration,
   formatCompactCurrency,
   formatNumber,
   formatCompactNumber,
   formatPercent,
   formatCompactPercent,
-  formatName
+  formatName,
+  formatRelativeTime
 } from "data-formatters"
 ```
 
@@ -120,6 +130,64 @@ formatName("victor hugo lima")
 Result:
 ```
 Victor Hugo Lima
+```
+
+---
+### Bytes
+```ts
+formatBytes(1536)
+```
+Result:
+```
+1.5 KB
+```
+
+---
+### Date
+```ts
+formatDate("2026-03-09T00:00:00Z", {
+  locale: "en-US",
+  timeZone: "UTC"
+})
+```
+Result:
+```
+03/09/2026
+```
+
+---
+### DateTime
+```ts
+formatDateTime("2026-03-09T14:30:00Z", {
+  locale: "en-US",
+  timeZone: "UTC",
+  dateStyle: "medium",
+  timeStyle: "short"
+})
+```
+Result:
+```
+Mar 9, 2026, 2:30 PM
+```
+
+---
+### Duration
+```ts
+formatDuration(3665)
+```
+Result:
+```
+1h 1m 5s
+```
+
+---
+### Relative Time
+```ts
+formatRelativeTime(-1, "day", "en-US")
+```
+Result:
+```
+yesterday
 ```
 
 ---
