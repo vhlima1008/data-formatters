@@ -145,7 +145,7 @@ npm run test:watch
 ```
 
 ---
-# 🏗 Development
+# Development
 Clone the repository:
 ```bash
 git clone https://github.com/vhlima1008/data-formatters.git
@@ -178,6 +178,6 @@ Distributed under the **MIT License**.
 See `LICENSE` for more information.
 
 ---
-# 👤 Author
+# Author
 Victor Hugo Lima Monteiro
 GitHub: [https://github.com/vhlima1008](https://github.com/vhlima1008)
