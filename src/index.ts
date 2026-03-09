@@ -1,7 +1,12 @@
-export { formatCurrency, formatCompactCurrency } from './formatters/currency';
-export { formatNumber, formatCompactNumber } from './formatters/number';
-export { formatPercent, formatCompactPercent } from './formatters/percent';
-export { formatName } from './formatters/text';
+export * from './formatters/currency';
+export * from './formatters/number';
+export * from './formatters/percent';
+export * from './formatters/text';
+export * from './formatters/bytes'
+export * from './formatters/date'
+export * from './formatters/datetime'
+export * from './formatters/duration'
+export * from './formatters/relative-time'
 
 export type {
   BaseFormatterOptions,

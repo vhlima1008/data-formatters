@@ -103,12 +103,70 @@ var formatCompactPercent = (value, options = {}) => {
 var formatName = (name) => {
   return name.trim().toLowerCase().replace(/(^|\s)\S/g, (char) => char.toUpperCase());
 };
+
+// src/formatters/bytes.ts
+var formatBytes = (bytes, decimals = 2) => {
+  if (bytes === 0) return "0 B";
+  const k = 1024;
+  const dm = decimals < 0 ? 0 : decimals;
+  const sizes = ["B", "KB", "MB", "GB", "TB"];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
+};
+
+// src/formatters/date.ts
+var formatDate = (value, options) => {
+  const date = new Date(value);
+  const locale = getLocale(options);
+  return new Intl.DateTimeFormat(locale, {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    ...options
+  }).format(date);
+};
+
+// src/formatters/datetime.ts
+var formatDateTime = (value, options) => {
+  const date = new Date(value);
+  const locale = getLocale(options);
+  return new Intl.DateTimeFormat(locale, {
+    dateStyle: "medium",
+    timeStyle: "short",
+    ...options
+  }).format(date);
+};
+
+// src/formatters/duration.ts
+var formatDuration = (seconds) => {
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor(seconds % 3600 / 60);
+  const s = seconds % 60;
+  const parts = [];
+  if (h) parts.push(`${h}h`);
+  if (m) parts.push(`${m}m`);
+  if (s || parts.length === 0) parts.push(`${s}s`);
+  return parts.join(" ");
+};
+
+// src/formatters/relative-time.ts
+var formatRelativeTime = (value, unit, locale = "en-US") => {
+  const formatter = new Intl.RelativeTimeFormat(locale, {
+    numeric: "auto"
+  });
+  return formatter.format(value, unit);
+};
 export {
+  formatBytes,
   formatCompactCurrency,
   formatCompactNumber,
   formatCompactPercent,
   formatCurrency,
+  formatDate,
+  formatDateTime,
+  formatDuration,
   formatName,
   formatNumber,
-  formatPercent
+  formatPercent,
+  formatRelativeTime
 };

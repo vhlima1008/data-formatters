@@ -21,4 +21,18 @@ declare const formatCompactPercent: (value: number, options?: FractionDigitsOpti
 
 declare const formatName: (name: string) => string;
 
-export { type BaseFormatterOptions, type CurrencyFormatterOptions, type FractionDigitsOptions, formatCompactCurrency, formatCompactNumber, formatCompactPercent, formatCurrency, formatName, formatNumber, formatPercent };
+declare const formatBytes: (bytes: number, decimals?: number) => string;
+
+declare const formatDate: (value: Date | string | number, options?: Intl.DateTimeFormatOptions & {
+    locale?: string;
+}) => string;
+
+declare const formatDateTime: (value: Date | string | number, options?: Intl.DateTimeFormatOptions & {
+    locale?: string;
+}) => string;
+
+declare const formatDuration: (seconds: number) => string;
+
+declare const formatRelativeTime: (value: number, unit: Intl.RelativeTimeFormatUnit, locale?: string) => string;
+
+export { type BaseFormatterOptions, type CurrencyFormatterOptions, type FractionDigitsOptions, formatBytes, formatCompactCurrency, formatCompactNumber, formatCompactPercent, formatCurrency, formatDate, formatDateTime, formatDuration, formatName, formatNumber, formatPercent, formatRelativeTime };
