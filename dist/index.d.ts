@@ -21,6 +21,18 @@ declare const formatCompactPercent: (value: number, options?: FractionDigitsOpti
 
 declare const formatName: (name: string) => string;
 declare const formatCompactName: (name: string) => string;
+declare const getInitials: (text: string) => string[];
+declare const getWord: (text: string, position: number) => string;
+interface formatCitationProps {
+    names: string[];
+    reference: string;
+    institution: string;
+    locale: string;
+    date: string;
+    rule: 'APA' | 'ABNT';
+    type: 'in-text' | 'in-text-alter' | 'reference';
+}
+declare const formatCitation: ({ names, reference, institution, locale, date, rule, type, }: formatCitationProps) => string;
 
 declare const formatBytes: (bytes: number, decimals?: number) => string;
 
@@ -36,4 +48,4 @@ declare const formatDuration: (seconds: number) => string;
 
 declare const formatRelativeTime: (value: number, unit: Intl.RelativeTimeFormatUnit, locale?: string) => string;
 
-export { type BaseFormatterOptions, type CurrencyFormatterOptions, type FractionDigitsOptions, formatBytes, formatCompactCurrency, formatCompactName, formatCompactNumber, formatCompactPercent, formatCurrency, formatDate, formatDateTime, formatDuration, formatName, formatNumber, formatPercent, formatRelativeTime };
+export { type BaseFormatterOptions, type CurrencyFormatterOptions, type FractionDigitsOptions, formatBytes, formatCitation, type formatCitationProps, formatCompactCurrency, formatCompactName, formatCompactNumber, formatCompactPercent, formatCurrency, formatDate, formatDateTime, formatDuration, formatName, formatNumber, formatPercent, formatRelativeTime, getInitials, getWord };
