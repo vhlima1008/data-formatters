@@ -1,12 +1,9 @@
 # data-formatters
 
-[![CI](https://github.com/vhlima1008/data-formatters/actions/workflows/ci.yml/badge.svg)](https://github.com/vhlima1008/data-formatters/actions)
-[![npm version](https://img.shields.io/npm/v/data-formatters.svg)](https://www.npmjs.com/package/data-formatters)
-[![npm downloads](https://img.shields.io/npm/dm/data-formatters.svg)](https://www.npmjs.com/package/data-formatters)
-[![License](https://img.shields.io/github/license/vhlima1008/data-formatters)](LICENSE)
-
 Utility library for **formatting numbers, currency, percentages, dates, time, bytes, and text** using modern `Intl` APIs.
-This project provides small, reusable helpers to standardize value formatting in frontend applications.
+This project provides small, reusable helpers to standardize value formatting across frontend and backend TypeScript applications.
+
+The implementation is runtime-neutral: it has no DOM dependency and can run in Node.js, browser apps, server-side rendering, API services, workers, and shared packages. Locale detection uses `navigator` only when it exists; backend runtimes fall back to `en-US` unless a locale is provided explicitly.
 
 ---
 
@@ -207,10 +204,6 @@ Run locally:
 ```bash
 npm test
 ```
-Run in watch mode:
-```bash
-npm run test:watch
-```
 
 ---
 # Development
@@ -244,8 +237,3 @@ git checkout -b feature/my-feature
 # License
 Distributed under the **MIT License**.
 See `LICENSE` for more information.
-
----
-# Author
-Victor Hugo Lima Monteiro
-GitHub: [https://github.com/vhlima1008](https://github.com/vhlima1008)
