@@ -4,6 +4,24 @@ import type { FractionDigitsOptions } from '../types/formatter-options';
 
 const DEFAULT_FALLBACK = '—';
 
+/**
+ * Formats a number using localized digit grouping and fraction settings.
+ *
+ * Use this for general numeric values. The locale is resolved from
+ * `options.locale`, the browser language, or the default locale.
+ *
+ * @param value - The numeric value to format.
+ * @param options - Optional locale, fallback, and fraction digit settings.
+ * @returns A localized number string, or the fallback string when `value` is not finite.
+ *
+ * @example
+ * formatNumber(1234.56, { locale: 'en-US', maximumFractionDigits: 1 });
+ * // "1,234.6"
+ *
+ * @example
+ * formatNumber(Infinity);
+ * // "—"
+ */
 export const formatNumber = (
   value: number,
   options: FractionDigitsOptions = {},
@@ -20,6 +38,21 @@ export const formatNumber = (
   }).format(value);
 };
 
+/**
+ * Formats a number using localized compact notation.
+ *
+ * Use this for abbreviated values in dashboards, charts, or space-constrained
+ * UI. The locale is resolved from `options.locale`, the browser language, or
+ * the default locale.
+ *
+ * @param value - The numeric value to format.
+ * @param options - Optional locale and fallback settings.
+ * @returns A compact localized number string, or the fallback string when `value` is not finite.
+ *
+ * @example
+ * formatCompactNumber(1500000, { locale: 'en-US' });
+ * // "1.5M"
+ */
 export const formatCompactNumber = (
   value: number,
   options: Omit<FractionDigitsOptions, 'minimumFractionDigits' | 'maximumFractionDigits'> = {},
